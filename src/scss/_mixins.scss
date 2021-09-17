@@ -1,13 +1,19 @@
-$winWideMin: 1264px;
+$minimizeMax: 683px;
 $phoneMax: 1000px;
+$winWideMin: $phoneMax + 1px;
+$winWideMax: 1264px;
 
 @mixin responsive($size) {
   @if $size == "winWide" {
-    @media screen and (max-width: $winWideMin) {
+    @media screen and (min-width: $winWideMin) and (max-width: $winWideMax) {
       @content;
     }
   } @else if $size == "phone" {
     @media screen and (max-width: $phoneMax) {
+      @content;
+    }
+  } @else if $size == "minimize" {
+    @media screen and (max-width: $minimizeMax) {
       @content;
     }
   }

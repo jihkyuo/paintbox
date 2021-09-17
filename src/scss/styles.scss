@@ -4,6 +4,7 @@
 
 @import "_variables.scss";
 @import "_mixins.scss";
+@import "_elements";
 
 * {
   box-sizing: border-box;
@@ -23,7 +24,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 160px;
-  font-family: "Julius Sans One", sans-serif;
+  font-family: $headerFont;
   font-size: 10px;
   text-transform: uppercase;
   font-weight: 600;
@@ -52,7 +53,7 @@ body {
     width: 33%;
     display: flex;
     justify-content: center;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-family: $homeFont;
     .header__home__column {
       font-size: 14px;
       padding: 5px;
@@ -89,44 +90,102 @@ main {
   display: grid;
   width: $wideWidth;
   .main__section {
+    @extend %main-section;
+  }
+  .main__the-shop {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    .main__the-shop__title {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+    .main__the-shop__text {
+      font-family: $contentFont;
+      font-size: 30px;
+      margin-top: 25px;
+    }
+  }
+
+  .main__products {
     display: grid;
-    grid-template-columns: 50% 50%;
-    margin-bottom: 80px;
-    @include responsive("phone") {
+    grid-template-columns: repeat(3, 1fr);
+    @include responsive("minimize") {
       grid-template-columns: 1fr;
     }
-    .main__section__img {
-      img {
-        width: 100%;
-      }
-    }
-    .main__section__content {
-      background-color: #fbf7f6;
+
+    .main__product {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 5rem;
-      @include responsive("phone") {
-        padding: 5rem;
-      }
-      .main__section__text {
-        font-size: 30px;
-        font-family: "Antic Didone", serif;
-        color: rgba(0, 0, 0, 0.8);
-        @include responsive("phone") {
-          font-size: 25px;
+      .main__product__img {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        img {
+          width: 100%;
+          transition: 1s ease-in-out all;
+          @include responsive("minimize") {
+            width: 80%;
+          }
+          &:first-child {
+          }
+          &:last-child {
+            display: none;
+          }
         }
       }
-      .main__section__button {
-        border: 2px solid rgba(0, 0, 0, 0.4);
-        padding: 20px 70px;
-        font-size: 10px;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        margin-top: 65px;
+      .main__product__info {
+        text-align: center;
+        cursor: pointer;
+        .main__product__type {
+          font-size: 10px;
+          letter-spacing: 1.5px;
+          span {
+            margin: 0 8px;
+            &:not(:first-child) {
+              color: #d1a764;
+            }
+            &:nth-child(2) {
+              opacity: 0.4;
+            }
+          }
+        }
+        .main__product__name {
+          margin-top: 10px;
+          font-family: $contentFont;
+          font-size: 25px;
+          font-style: italic;
+        }
+        .main__product__price {
+          margin-top: 23px;
+          font-size: 12px;
+          opacity: 0.5;
+        }
       }
+      .main__product__button {
+        margin-top: 30px;
+        width: 70%;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.8);
+        padding: 18px 0;
+        transition: 0.2s ease-in-out all;
+        cursor: pointer;
+        &:hover {
+          background-color: #414141;
+          color: white;
+        }
+      }
+
+      &:hover img:first-child {
+        display: none;
+      }
+      &:hover img:last-child {
+        display: block;
+      }
+      transition: 1s ease-in-out all;
     }
   }
 }
