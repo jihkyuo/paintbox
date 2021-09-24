@@ -14,6 +14,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100vw;
 }
 .header {
   @include responsive("winWide") {
@@ -111,10 +112,6 @@ main {
   .main__products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    @include responsive("minimize") {
-      grid-template-columns: 1fr;
-    }
-
     .main__product {
       display: flex;
       flex-direction: column;
@@ -123,16 +120,23 @@ main {
         cursor: pointer;
         display: flex;
         justify-content: center;
+        position: relative;
         img {
           width: 100%;
-          transition: 1s ease-in-out all;
           @include responsive("minimize") {
-            width: 80%;
+            width: 70vw;
           }
           &:first-child {
+            transition: all 0.5s ease-in-out;
           }
           &:last-child {
-            display: none;
+            position: absolute;
+            transition: all 0.5s ease-in-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
           }
         }
       }
@@ -178,14 +182,18 @@ main {
           color: white;
         }
       }
-
       &:hover img:first-child {
-        display: none;
+        opacity: 0;
       }
       &:hover img:last-child {
-        display: block;
+        opacity: 1;
       }
-      transition: 1s ease-in-out all;
+    }
+    @include responsive("minimize") {
+      overflow-x: hidden;
+      .main__product {
+        width: 100vw;
+      }
     }
   }
 }
