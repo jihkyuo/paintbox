@@ -14,8 +14,8 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
 }
+
 .header {
   @include responsive("winWide") {
     width: $middleWidth;
@@ -190,10 +190,43 @@ main {
       }
     }
     @include responsive("minimize") {
-      overflow-x: hidden;
+      position: relative;
       .main__product {
-        width: 100vw;
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        left: 0;
+        right: 0;
+        opacity: 0;
+      }
+      .showing {
+        z-index: 2;
+        background-color: white;
+        opacity: 1;
       }
     }
+  }
+}
+
+@include responsive("minimize") {
+  .controls {
+    display: block;
+    width: 200px;
+    margin: 135% auto;
+    z-index: 100;
+    .control__list {
+      display: flex;
+      justify-content: space-between;
+      .control__item {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .paintBtn {
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
