@@ -93,6 +93,18 @@ main {
   .main__section {
     @extend %main-section;
   }
+  .main__section__three {
+    margin-top: 10%;
+    @include responsive("minimize") {
+      margin-top: 50px;
+    }
+  }
+  .main__section__four:first-child {
+    margin-top: 10%;
+  }
+  .main__section__four {
+    margin: 0;
+  }
   .main__the-shop {
     display: flex;
     align-items: center;
@@ -211,7 +223,7 @@ main {
   .controls {
     display: block;
     width: 200px;
-    margin: 135% auto;
+    margin: 140% auto 0 auto;
     z-index: 100;
     .control__list {
       display: flex;
