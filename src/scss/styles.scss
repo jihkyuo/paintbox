@@ -132,9 +132,13 @@ main {
 
   .main__section__four {
     margin-bottom: 0;
+    // height: 26rem;
+    img {
+      // height: 100%;
+    }
   }
   #main__section__four--two {
-    @include responsive("minimize") {
+    @include responsive("phone") {
       display: flex;
       flex-direction: column-reverse;
     }
@@ -264,8 +268,8 @@ main {
       display: flex;
       justify-content: space-between;
       .control__item {
-        width: 8px;
-        height: 8px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         border: 1px solid rgba(0, 0, 0, 0.8);
         cursor: pointer;
