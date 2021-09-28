@@ -64,5 +64,19 @@
         padding: 0 20px;
       }
     }
+    .main__section__arrow__button {
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-top: 40px;
+      i {
+        transition: all 0.5s ease-in-out;
+      }
+      span:first-child {
+        margin: 0 20px;
+      }
+      &:hover i {
+        transform: translateX(10px);
+      }
+    }
   }
 }

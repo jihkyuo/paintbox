@@ -132,10 +132,6 @@ main {
 
   .main__section__four {
     margin-bottom: 0;
-    // height: 26rem;
-    img {
-      // height: 100%;
-    }
   }
   #main__section__four--two {
     @include responsive("phone") {
@@ -256,6 +252,95 @@ main {
       }
     }
   }
+
+  @include responsive("minimize") {
+    #main__the-shop__Nail__text {
+      width: 80%;
+      text-align: center;
+      line-height: 1.3;
+      font-size: 25px;
+    }
+  }
+  .main__products__nail {
+    width: 55%;
+    margin: 80px auto;
+    display: flex;
+    @include responsive("phone") {
+      width: 100%;
+    }
+    @include responsive("minimize") {
+      position: relative;
+      margin-bottom: 50%;
+      width: 50%;
+    }
+
+    .main__product__nail {
+      position: relative;
+      width: 100%;
+      padding: 0 30px;
+      cursor: pointer;
+      @include responsive("minimize") {
+        position: absolute;
+        width: 80%;
+        top: 0;
+        left: 0;
+        transform: translatex(13%);
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .main__product__nail__img {
+        img {
+          margin-bottom: 30px;
+          width: 100px;
+        }
+        @include responsive("phone") {
+          display: flex;
+          justify-content: center;
+          img {
+            width: 75%;
+          }
+        }
+      }
+    }
+    .showingNail {
+      z-index: 2;
+      background-color: white;
+      opacity: 1;
+    }
+    .main__product__nail:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      border-right: 1px solid black;
+      opacity: 0.4;
+      @include responsive("minimize") {
+        display: none;
+      }
+    }
+    .main__product__nail__info {
+      font-size: 12px;
+      opacity: 0.7;
+      text-align: center;
+    }
+  }
+
+  .main__product__nail__button {
+    margin: 30px auto 80px auto;
+    width: 70%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 18px 0;
+    transition: 0.2s ease-in-out all;
+    cursor: pointer;
+    &:hover {
+      background-color: #414141;
+      color: white;
+    }
+  }
 }
 
 @include responsive("minimize") {
@@ -277,7 +362,50 @@ main {
     }
   }
 
+  .controls-nail {
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    .control-nail__list {
+      display: flex;
+      justify-content: space-between;
+      .control-nail__item {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+      }
+    }
+  }
+
   .paintBtn {
     background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+#main__the-shop__last {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.email {
+  margin: 0 auto 100px auto;
+  height: 80px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  input {
+    position: relative;
+    width: 100%;
+    border-style: none;
+    border-bottom: 1px solid black;
+    font-size: 30px;
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+    }
+  }
+  span {
+    position: absolute;
+
+    left: 0;
   }
 }
